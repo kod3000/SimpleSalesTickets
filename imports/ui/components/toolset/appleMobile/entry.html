@@ -1,0 +1,220 @@
+<template name="appleCSS">
+{{#if universal_IOS_ANDROID_CHECK}}
+{{!-- Anything that is APPLE.. Declare here .. --}}
+
+body{
+margin:30px;
+font-size: 2em;
+}
+
+small{
+font-weight: 200;
+font-size: 38px;
+}
+
+th{
+font-size: 3em;
+}
+
+.itemGrind{
+font-size: 7em;
+}
+
+.showContent{
+letter-spacing: 10px;
+margin-bottom: 20px;
+font-size: 3em;
+padding: 15px;
+}
+
+form, button, .form-control, .btn{
+font-size:30px;
+}
+
+.glyphicon{
+font-size:100px;
+}
+
+.glyphicon.small{
+font-size:55px;
+padding:5px;
+}
+
+input{
+border:0px;
+font-size: 3em;
+}
+
+td b{
+font-size: 35px;
+}
+
+.footer{
+font-size: 3em;
+margin-left:-15px;
+margin-bottom:-20px;
+}
+
+p{
+font-size: 3em;
+}
+
+.btn{
+font-size: 3em;
+}
+
+h3{
+font-size: 1em;
+}
+
+textarea{
+font-size: 3em;
+}
+
+.highlight{
+font-weight: 500;
+font-size: 60px;
+}
+{{!-- END WHAT IS APPLE.. Nothing Else After here .. --}}
+
+{{else}}
+{{!-- Anything that is Android.. Declare here .. --}}
+
+body{
+margin:30px;
+}
+
+.loading-message{
+font-size: 80px;
+}
+
+.itemGrind{
+font-size: 3em;
+}
+
+.showContent{
+letter-spacing: 10px;
+margin-bottom: 20px;
+font-size: 30px;
+padding: 15px;
+}
+
+.glyphicon{
+font-size:20px;
+}
+
+.glyphicon.small{
+font-size:15px;
+padding:5px;
+}
+
+.btn-success.glyphicon.large{
+font-size:40px;
+}
+
+.footer{
+font-size:10px;
+margin-left:-20px;
+margin-bottom:-10px;
+}
+
+.btn{
+font-size:18px;
+}
+{{!-- END WHAT IS Android.. Nothing Else After here .. --}}
+{{/if}}
+{{!-- Color is declard outside of this cause it doesn't matter what device you are using..... --}}
+{{!-- Begin Universal CSS..... --}}
+
+body{
+background-color: {{JACKCSS "BC"}};
+color: {{JACKCSS "RTC"}}
+}
+
+.btn-success{
+background-color: #4caf5000;
+border-color: {{JACKCSS "BT1"}};
+border-width: 4px;
+border-top:0px;
+border-right:0px;
+border-left:0px;
+color:  {{JACKCSS "BT1"}};
+}
+
+.btn-success:hover{
+background-color: #4caf5000;
+border-color: {{JACKCSS "BT1"}};
+border-width: 4px;
+color:  {{JACKCSS "BT1"}};
+}
+
+.btn-success.second{
+background-color: #4caf5000;
+border-color: {{JACKCSS "BT2"}};
+border-width: 4px;
+color:  {{JACKCSS "BT2"}};
+}
+
+.btn-success.second:hover{
+background-color: #4caf5000;
+border-color: {{JACKCSS "BT2"}};
+border-width: 4px;
+color:  {{JACKCSS "BT2"}};
+}
+
+.btn-success.urgent{
+background-color: #4caf5000;
+border-color: {{JACKCSS "BT3"}};
+border-width: 4px;
+color:  {{JACKCSS "BT3"}};
+}
+
+.btn-success.urgent:hover{
+background-color: #4caf5000;
+border-color: {{JACKCSS "BT3"}};
+border-width: 4px;
+color:  {{JACKCSS "BT3"}};
+}
+
+.btn-success.highlight{
+background-color: #4caf5000;
+border-color: {{JACKCSS "HTC"}};
+border-width: 4px;
+color:  {{JACKCSS "HTC"}};
+}
+
+.btn-success.highlight:hover{
+background-color: #4caf5000;
+border-color: {{JACKCSS "HTC"}};
+border-width: 4px;
+color:  {{JACKCSS "HTC"}};
+}
+
+.btn-success.glyphicon{
+background-color: #4caf5000;
+border-color: {{JACKCSS "BT3"}};
+border-width: 4px;
+color:  {{JACKCSS "BT3"}};
+}
+
+.btn-success.glyphicon:hover{
+background-color: #4caf5000;
+border-color: {{JACKCSS "BT3"}};
+border-width: 4px;
+color:  {{JACKCSS "BT3"}};
+
+}
+
+.highlight{
+color:  {{JACKCSS "HTC"}};
+
+}
+
+.glyphicon.second{
+color:  {{JACKCSS "BT2"}};
+}
+
+.glyphicon.urgent{
+color:  {{JACKCSS "BT3"}};
+}
+</template>

@@ -1,0 +1,70 @@
+<template name="detailTicketView">
+    <div style="padding:5px;position:absolute;display:block;height:{{getHeight}}px;width:{{getWidthCustom}}px; overflow-y: auto;" >
+        <div class="displ-listCont" id="listCont" style="border-color:green;height:{{getHalfHeight}}px;width:{{getWidth}}px;border-radius:10px;text-align:right;">
+            <small style="font-weight: 500;
+                letter-spacing: 2px;
+                display: block;
+                background-color: #0000000a;
+                padding: 5px;" >[ Add Item ]</small>
+            <br />
+              <input type="number" id="iQty" placeholder="Qty" name="iQty"  style="min-width:100%;text-align:right;padding:5px;margin-bottom:5px;border:1px solid #0000001f;    background-color: #ffffff2e;"><br />
+              <input type="text" id="iDes" placeholder="Description" name="iDes" autocomplete="new-password"  style="min-width:100%;text-align:right;padding:5px;margin-bottom:5px;border:1px solid #0000001f;    background-color: #ffffff2e;"><br />
+                  <input type="number" id="iUnit" placeholder="Unit" name="iUnit" autocomplete="new-password"  style="min-width:100%;text-align:right;padding:5px;margin-bottom:5px;border:1px solid #0000001f;    background-color: #ffffff2e;"><br />
+                  <input type="text" id="iAmount" placeholder="Amount" name="iAmount" autocomplete="new-password"  style="min-width:100%;text-align:right;padding:5px;margin-bottom:5px;border:1px solid #0000001f;    background-color: #ffffff2e;"><br />
+                      <button  class="btn btn-block btn-success " style="margin-top:20px;letter-spacing: 10px;" data-id="save">Save</button>
+                      <button  class="btn btn-block btn-success second" style="margin-top:20px;letter-spacing: 10px;" data-id="addAnother">Add Item</button>
+            <button  class="btn btn-block btn-success urgent" style="margin-top:20px;letter-spacing: 10px;" data-id="cancelItems">Cancel</button>
+            <br />
+            <br />
+             {{#each itemsReadyToAdd}}
+             <span class="glyphicon glyphicon-tags"  style="position:relative;width:40px;height:40px;display:inline-block;margin:5px;" aria-hidden="true"></span>
+             {{/each}}
+        </div>
+        <div class="displ-list" id="listDisp" style="display:none; border-color:green;height:{{getHalfHeight}}px;width:{{getWidth}}px;border-radius:10px;text-align:right;">
+            <br/>
+            <button  class="btn btn-block btn-success " style="margin-top:20px;letter-spacing: 10px;" data-id="item">Add Item</button>
+            <br/>
+            <br/>
+            <table class="table">
+                <thead >
+                    <tr >
+                        <th scope="col" style="text-align:center;">Qty</th>
+                        <th scope="col" style="text-align:center;">Description</th>
+                        <th scope="col" style="text-align:center;">Unit</th>
+                        <th scope="col" style="text-align:center;">Action</th>
+                    </tr>
+                </thead>
+                <tbody style="text-align:center;">
+                    {{#each returnListOfItemsInsideTicket}}
+                    <tr>
+                        <td>{{qty}}</td>
+                        <td>{{des}}</td>
+                        <td>{{unit}}</td>
+                        {{!--
+                        if its pending.. start it up
+                        if its ongoing.. mark it as complete or pause it
+                        --}}
+                        {{#if completed}}
+                        {{!-- if the item is complete then no more action --}}
+                        <td  ><span class="glyphicon glyphicon-gift" aria-hidden="true" ></span></td>
+                        {{else}}
+                        <td class="btn-success"  data-id="statusItem" data-item="{{id}}" >
+                            <span class="glyphicon glyphicon-{{checkGlyph status}}" aria-hidden="true"   data-id="statusItem" data-item="{{id}}" ></span>           
+                        </td>
+                        {{/if}}
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td ></td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+            <br />
+            <br />
+            <button  class="btn btn-block btn-success urgent" style="position:absolute; bottom:40px;min-height:60px;left:0px;max-width:{{getBackButtonWidth}}px;margin-top:20px;letter-spacing: 10px;" data-id="goBack"><span class="btn-success glyphicon large glyphicon-backward" aria-hidden="true" data-id="goBack"></span></button>
+        </div>        
+    </div>
+</template>

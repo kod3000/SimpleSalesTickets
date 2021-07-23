@@ -1,0 +1,21 @@
+<template name="createClientView">
+    <div style="position:relative;top:0xp;left:0px;display:block;height:{{getHeight}}px;width:{{getWidthCustom}}px;" >
+      <div style="border-color:green;height:{{getHalfHeight}}px;width:{{getWidthCustom}}px;border-radius:10px;text-align:right;">
+          <small style="font-weight: 500;letter-spacing: 2px;display: block;background-color: #0000000a;padding: 15px;" >[ New Client ]</small>
+          <small style="color: red;font-weight: 500;letter-spacing: 3px;display:block;" >*All Fields Are Required</small>
+          <br/>
+          <input type="text" id="cName" placeholder="Customer Name" name="cName" autocomplete="new-password"  style="min-width:100%;text-align:right;padding:10px;margin-bottom:5px;border:1px solid #0000001f;    background-color: #ffffff2e;"><br />
+              <input type="text" id="cPhone" placeholder="Customer Phone #" autocomplete="new-password"  name="cPhone" style="min-width:100%;text-align:right;padding:10px;margin-bottom:5px;border:1px solid #0000001f;    background-color: #ffffff2e;"><br />
+                  <input type="email" id="cEmail" autocomplete="new-password" placeholder="Customer Email" name="cEmail" style="min-width:100%;text-align:right;padding:10px;margin-bottom:5px;border:1px solid #0000001f;    background-color: #ffffff2e;"><br />
+                      <textarea name="cAddress" id="cAddress" placeholder="Street, City, State"  rows="10" cols="30" style="text-align:right;max-height: 100px;width:100%;margin-bottom:5px;border:1px solid #0000001f;padding:10px;    background-color: #ffffff2e;"></textarea><br />
+                  <input type="number" id="cZip" min="0" max="99999" step="5"  placeholder="Zip Code" name="cZip" style="min-width:100%;text-align:right;padding:10px;margin-bottom:5px;border:1px solid #0000001f;    background-color: #ffffff2e;"><br />
+                  <input type="text" id="pName" autocomplete="new-password"  placeholder="Project Name" name="pName" style="min-width:100%;text-align:right;padding:10px;margin-bottom:5px;border:1px solid #0000001f;    background-color: #ffffff2e;"><br />
+                      <br />
+                      <button  class="btn btn-block btn-success " style="margin-top:20px;letter-spacing: 10px;" data-id="jump">Save Client</button>
+                     <button  class="btn btn-block btn-success second" style="margin-top:20px;letter-spacing: 10px;" data-id="open">Open Ticket</button>
+                     <button  class="btn btn-block btn-success urgent" style="margin-top:20px;letter-spacing: 10px;" data-id="cancel">Cancel</button>
+                      <br />
+                      <br />        
+      </div>
+  </div>
+</template>

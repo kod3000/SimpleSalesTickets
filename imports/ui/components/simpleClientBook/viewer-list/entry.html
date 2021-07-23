@@ -1,0 +1,47 @@
+<template name="listClientView">
+    <div style="position:relative;top:0xp;left:0px;display:block;height:{{getHeight}}px;width:{{getWidthCustom}}px;" >
+        <div style="position:absolute;display:block;height:{{getHeight}}px;width:{{getWidthCustom}}px;    overflow: auto;"  >
+            <small style="font-weight: 500;
+                letter-spacing: 2px;
+                display: block;
+                background-color: #0000000a;
+                padding: 15px;" >[ Client List ] </small>
+            <span class="add glyphicon urgent glyphicon-user "  style="text-align:right;display:block;padding: 15px;" aria-hidden="true"></span>
+            <table class="table">
+                <thead>
+                    <tr >
+                        <th scope="col" style="text-align:center;">#</th>
+                        <th scope="col" style="text-align:center;">Project</th>
+                        <th scope="col" style="text-align:center;">Customer</th>
+                        <th scope="col" style="text-align:center;">Status</th>
+
+                    </tr>
+                </thead>
+                <tbody style="text-align:center;">
+            {{#each okayguy}}
+                <tr>
+                    <td>{{numIndex @index}}</td>
+                    <td>{{cProject}}</td>
+                    <td>{{name}}</td>
+                    <td class="clickBait" data-id="{{unique}}" >
+                        
+                        {{!-- Here we set weather or not the Client has an active project or not  --}}
+                        {{#if active}}
+                        <span class="glyphicon glyphicon-flash"  data-id="{{unique}}"  aria-hidden="true"></span>
+                        {{else}}
+                        <span class="glyphicon glyphicon-minus"  data-id="{{unique}}"  aria-hidden="true"></span>
+                        {{/if}}
+                    </td>
+                    </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td ></td>
+        </tr>
+        {{/each}}
+        </tbody>
+        </table>
+        </div>
+</div>  
+</template>

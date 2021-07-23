@@ -1,0 +1,19 @@
+<template name="summaryTicketView">
+    <div style="position:relative;top:0xp;left:0px;display:block;height:{{getHeight}}px;width:{{getWidthCustom}}px;" >
+        <div style="position:absolute;display:block;height:{{getHeight}}px;width:{{getWidthCustom}}px;overflow: auto;" >
+            <div style="letter-spacing: 2px;
+                display: block;
+                text-align:center;
+                width:100%;
+                border:0px;
+                padding: 5px;" class="highlight" >[ {{getSessionData.project}}  ]<br /><small>[ {{getSessionData.client}}  ]</small></div>
+            <div class="btn-success highlight itemGrind " style="display: block;padding: 10px;text-align: center;" data-id="showItems" >{{getSessionData.qty}}  ITEMS <h3 style="text-align: center;">Total Owed {{doTheMath getSessionData.total getSessionData.moneyCollected}}</h3></div>
+            <button  class="btn btn-block btn-success " style="margin-top:20px;letter-spacing: 10px;" data-id="item">Add Item</button>
+            <button  class="btn btn-block btn-success " style="margin-top:20px;letter-spacing: 10px;" data-id="payment">Enter Payment</button>          
+            <button  class="btn btn-block btn-success second" style="margin-top:20px;letter-spacing: 10px;" data-id="status">Project Status</button>
+            <button  class="btn btn-block btn-success second" style="margin-top:20px;letter-spacing: 10px;" data-id="note">Make A Note</button>
+            <br/>
+        </div>
+    </div>
+    <button  class="btn btn-block btn-success urgent" style="position:absolute; bottom:40px;min-height:60px;left:0px;max-width:{{getBackButtonWidth}}px;margin-top:20px;letter-spacing: 10px;" data-id="goBack"><span class="btn-success glyphicon glyphicon-log-out" aria-hidden="true" style="vertical-align: bottom;" data-id="goBack"></span>EXIT TICKET</button>
+</template>

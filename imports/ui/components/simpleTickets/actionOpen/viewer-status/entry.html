@@ -1,0 +1,87 @@
+<template name="statusTicketView">
+    <div style="position:relative;top:0xp;left:0px;display:block;height:{{getHeight}}px;width:{{getWidthCustom}}px;" >
+        <div id="statusCont" style="position:absolute;display:block;height:{{getHeight}}px;width:{{getWidthCustom}}px;overflow: auto;" >
+            <h3 class="highlight" style="font-weight: 500;
+                letter-spacing: 2px;
+                display: block;
+                text-align:center;
+                background-color: #0000000a;
+                padding: 5px;" > [ {{getItemData.status}} ]<br />Unit: {{getItemData.unit}} <br />Item : {{getItemData.des}}  <br />Price : {{dollarValue getItemData.amount}} <br /> QTY : {{getItemData.qty}}  </h3>
+            
+            <br/>
+            <span class="highlight" style="display:block;text-align:center;" >Set Status :</span>
+            {{#if  setComplete getItemData.status}}
+            <button  class="btn btn-block btn-success " style="margin-top:10px;margin-bottom:10px;letter-spacing: 10px;" data-id="inprocess">In-Process</button>
+            {{else}}
+            <button  class="btn btn-block btn-success " style="margin-top:10px;margin-bottom:20px;letter-spacing: 10px;" data-id="completedItem">Item Completed</button>
+            {{/if}}
+            <br />
+            <button  class="btn btn-block btn-success second" style="margin-top:10px;margin-bottom:20px;letter-spacing: 10px;" data-id="cancel">Cancel</button>
+            <br />
+            <button  class="btn btn-block btn-success urgent" style="margin-top:10px;margin-bottom:20px;letter-spacing: 10px;" data-id="deleteItem">Delete Item</button>
+            <br />
+            <br />
+            <br />
+        </div>
+        <div id="statusDisp" style="position:absolute;display:block;height:{{getHeight}}px;width:{{getWidthCustom}}px;overflow: auto;" >
+            <br />
+            <small class="btn-success highlight "  style="font-weight: 500;
+                letter-spacing: 2px;
+                display: block;
+                background-color: #0000000a;
+                text-align:center;
+                padding: 5px;"  data-id="gotoPayment" >[ Project : {{getSessionData.project}}  ]<br />Ticket total : {{dollarValue getSessionData.total}} <br /> Payed to Date : {{dollarValue getSessionData.moneyCollected}}</small>
+            <br/>
+             <span style="    width: 100%;
+                display: block;
+                text-align: center;
+                text-transform: uppercase;
+                 letter-spacing: 3px;" >This Project is<br /><span class="glyphicon small glyphicon-{{giveTheGlyph getSessionData.status}}" aria-hidden="true"></span>{{getSessionData.status}}<span class="glyphicon small glyphicon-{{giveTheGlyph getSessionData.status}}" aria-hidden="true"></span></span>
+            <br/>
+            <br/>
+            {{#if checkifTheJobISCOMPLETED getSessionData.status}}
+            {{!-      if the job is completed there is not starting or stoping the job up.. --}}
+            {{!-- Once the job is complete the Client can be notified.. notified as to the order being ready for pickup --}}
+            <button  class="btn btn-block btn-success " style="margin-top:10px;margin-bottom:20px;letter-spacing: 10px;" data-id="">Notify Client</button>
+            {{!-- Once the email for pickup goes out we dont notify again. ( A Timer should be made for this.. time notified vs time to pickup) --}}
+            
+                                {{#if thisTicketCanBeClosed getSessionData.total getSessionData.moneyCollected}}
+                                {{!-- The Ticket Can only be closed out if its paid for in full.. --}}
+                                <h3 class="highlight" style="padding: 10px;
+                                    letter-spacing: 2px;
+                                    text-transform: uppercase;
+                                    text-align: center;">ATTENTION!!! <br /> Only Close the ticket if the customer has picked up their merchandise. <br /></h3>
+                                <button  class="btn btn-block btn-success urgent" style="margin-top:10px;margin-bottom:20px;letter-spacing: 10px;" data-id="closeTicket">Close Ticket</button>
+                                {{else}}
+                                <button  class="btn btn-block btn-success " style="margin-top:10px;margin-bottom:20px;letter-spacing: 10px;" data-id="" disabled>Close Ticket</button>
+                                <button  class="btn btn-block btn-success urgent" style="margin-top:10px;margin-bottom:20px;letter-spacing: 10px;" data-id="makePayMent">Add Payment</button>
+                                <h3 class="highlight" style="padding: 10px;
+                                    letter-spacing: 2px;
+                                    text-transform: uppercase;
+                                    text-align: center;"> This project is ready for pick up but it cannot be closed till the customer pays the owed amount of {{doTheMath getSessionData.total getSessionData.moneyCollected}} </h3>
+                                {{/if}}
+            {{else}}
+            
+                        {{#if checkTicketState getSessionData.state}}
+                        {{!-      if the job is still on going you can start it or stop it.  --}}
+
+                        <button  class="btn btn-block btn-success " style="margin-top:10px;margin-bottom:10px;letter-spacing: 10px;" data-id="startJob">Start Job</button>
+                        <br />
+                        <br />
+                        <br />
+                        <button  class="btn btn-block btn-success second" style="margin-top:10px;margin-bottom:20px;letter-spacing: 10px;" data-id="" disabled>Mark As Completed</button>
+                        {{else}}
+                        <button  class="btn btn-block btn-success " style="margin-top:10px;margin-bottom:10px;letter-spacing: 10px;" data-id="pauseJob">Pause Job</button>
+                        <br />
+                        <br />
+                        <br />
+                        <button  class="btn btn-block btn-success second" style="margin-top:10px;margin-bottom:20px;letter-spacing: 10px;" data-id="completeJob">Mark As Completed</button>
+                        {{/if}}
+            {{/if}}
+            <br />
+            <br />
+            <br />
+            <button  class="btn btn-block btn-success urgent" style="position:absolute; bottom:40px;min-height:60px;left:0px;max-width:{{getBackButtonWidth}}px;margin-top:20px;letter-spacing: 10px;" data-id="goBack"><span class="btn-success glyphicon large glyphicon-backward" aria-hidden="true" data-id="goBack"></span></button>
+        </div>
+    </div>
+</template>

@@ -1,0 +1,81 @@
+<template name="listTicketView">
+    <div style="position:relative;top:0xp;left:0px;display:block;height:{{getHeight}}px;width:{{getWidthCustom}}px;" >
+        <div style="position:absolute;display:block;height:{{getHeight}}px;width:{{getWidthCustom}}px;overflow: auto;" >
+        <div style="letter-spacing: 2px;
+            display: block;
+            text-align:center;
+            width:100%;
+            border:0px;
+            padding: 5px;" class="highlight" >[ {{getSessionData.name}} ]<br />[ Tickets ]</div>
+        
+        <br/>
+        <div style="max-width:{{getWidthCustom}}px;max-height:{{getHalfHeight}}px;
+            overflow-y: auto;
+            display: block;
+            position: initial;">
+        <table class="table" style="max-width:{{getWidthCustom}}px;max-height:{{getHalfHeight}}px;
+            overflow-y: auto;
+            display: inline-table;
+            position: initial;">
+            <thead >
+                <tr>
+                    <th scope="col" style="text-align:center;">Ticket</th>
+                    <th scope="col" style="text-align:center;">Project</th>
+                    <th scope="col" style="text-align:center;">Total Owed</th>
+                    <!-- Action View Old Ticket || Open Active Ticket -->
+                    <th scope="col" style="text-align:center;">Action</th>
+                </tr>
+            </thead>
+            <tbody style="text-align:center;">
+                {{#each okayguy}}
+                <tr style="border:0px;">
+                    <td>{{ticket}}</td>
+                    <td>{{project}}</td>
+                    {{!-- Here is where we say weather or not the ticket is ongoing.. complete ready for pickup.. or just an old ticket --}}
+                        {{!-- first we check if the ticket is completed or not --}}
+                        {{!-- every ticket has a variable that is called "completed" it is ethier true or false --}}
+                        {{#if completed}}
+                        <td style="text-decoration: line-through;" >{{dollarValue total}}</td>
+                        {{!-- If the ticket is complete its an archived ticket.. No Action --}}
+                        <td >
+                            <span class="glyphicon glyphicon-check" aria-hidden="true"  data-ticket="{{_id}}" data-id="openTicket" ></span>
+                        </td>    
+                        {{else}}
+                        <td>{{dollarValue total}}</td>
+
+                        {{!-- If the ticket is NOT complete it has the following actions :  New Ticket, Ongoing or Ready For Pickups an archived ticket.. No Action --}}
+                        
+
+                        {{!--
+                        we need to know if the ticket is
+                         - ongoing - glyphicon glyphicon-repeat
+                         - ready for pick up - glyphicon glyphicon-check
+                         - or if its newly created with nothing inside it. - glyphicon glyphicon-star-empty
+                         - we also need to know when a ticket is voided..
+                        --}}
+                        <td class="clickBait"  data-ticket="{{_id}}" data-id="openTicket" >
+                        <span class="glyphicon glyphicon-{{checkGlyph status}}" aria-hidden="true"  data-ticket="{{_id}}" data-id="openTicket" ></span>
+                        </td>
+                        {{/if}}
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td ></td>
+                </tr>
+                  {{/each}}
+            </tbody>
+        </table>
+        </div>
+        {{#unless getSessionData.active}}
+        <!-- Only display open ticket if nothing is open. -->
+        <button  class="btn btn-block btn-success " style="margin-top:20px;letter-spacing: 10px;" data-id="createTicket">Open A Ticket</button>
+        <br />
+        <br />
+        {{/unless}}
+        </div>
+        <button  class="btn btn-block btn-success urgent" style="position:absolute; bottom:40px;min-height:60px;left:0px;max-width:{{getBackButtonWidth}}px;margin-top:20px;letter-spacing: 10px;" data-id="goBack"><span class="btn-success glyphicon large glyphicon-arrow-down" aria-hidden="true" data-id="goBack"></span>
+</button>
+        </div>
+</template>

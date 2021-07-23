@@ -1,0 +1,29 @@
+<template name="App_body">
+    
+    {{#if mobile}}
+    {{!--
+<!--    <meta    name='viewport'   content='width=device-width, initial-scale=0.32, maximum-scale=1.0, user-scalable=0'/>-->
+--}}
+  {{> Template.dynamic template=main}}
+  {{else}}
+  <style type="text/css">
+      body{
+          background-color:white;
+      }
+  #message {
+      position:fixed;
+      top:20%;
+      left:2%;
+      color:#f3f3f3;
+      font-size:42px;
+      text-align: center;
+      width: 100%;
+  }
+  
+      </style>
+  <div id="message">Please use a Mobile Device.</div>
+  
+  
+  {{/if}}
+
+</template>

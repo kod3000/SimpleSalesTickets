@@ -1,0 +1,73 @@
+<template name="paymentTicketView">
+    <div style="position:relative;top:0xp;left:0px;display:block;height:{{getHeight}}px;width:{{getWidthCustom}}px;" >
+        <div  id="payCont" style="border-color:green;height:{{getHalfHeight}}px;width:{{getWidth}}px;border-radius:10px;text-align:right;">
+            <small style="font-weight: 500;
+                letter-spacing: 2px;
+                display: block;
+                background-color: #0000000a;
+                padding: 5px;" >[ Add Note ]</small>
+            <br />
+            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                <label class="btn btn-secondary active">
+                    <input type="radio" name="options" id="option1" data-id="cash" autocomplete="off" checked> CASH
+                        </label>
+                <label class="btn btn-secondary">
+                    <input type="radio" name="options" id="option2" data-id="credit" autocomplete="off"> CREDIT
+                        </label>
+                <label class="btn btn-secondary">
+                    <input type="radio" name="options" id="option3" data-id="atm" autocomplete="off"> ATM
+                        </label>
+            </div>
+            <br/>
+            <input type="number" id="ipay" placeholder="Amount" name="ipay"  style="min-width:100%;text-align:right;padding:15px;margin-bottom:5px;border:1px solid #0000001f;    background-color: #ffffff2e;"><br />
+                <br />
+            <textarea name="note" id="notepayment" placeholder="Customer had a special request.."  rows="10" cols="30" style="text-align:right;max-height: 100px;width:100%;margin-bottom:5px;border:1px solid #0000001f;padding:5px;    background-color: #ffffff2e;"></textarea><br />
+            <br />
+            <button  class="btn btn-block btn-success " style="margin-top:20px;letter-spacing: 10px;" data-id="save">Save Payment</button>
+            <button  class="btn btn-block btn-success urgent" style="margin-top:20px;letter-spacing: 10px;" data-id="cancel">Cancel</button>
+            <br />
+            {{#each itemsReadyToAdd}}
+            <span style="position:relative;width:40px;height:40px;background-color:yellow;display:inline-block;margin:5px;"></span>
+            {{/each}}
+        </div>
+        <div id="payDisp" style="position:absolute;display:block;height:{{getHeight}}px;width:{{getWidthCustom}}px;overflow: auto;" >
+            <button  class="btn btn-block btn-success " style="margin-top:10px;margin-bottom:20px;letter-spacing: 10px;" data-id="pay">Add Payment</button>
+            <small style="font-weight: 500;
+                letter-spacing: 2px;
+                display: block;
+                background-color: #0000000a;
+                padding: 5px;" >[ Project : {{getSessionData.project}}  ]<br />Ticket total : {{dollarValue getSessionData.total}} <br /> Payed to Date : {{dollarValue getSessionData.moneyCollected}}</small>
+            <br/>
+            Payment            
+            <br />
+            <table class="table">
+                <thead >
+                    <tr >
+                        <th scope="col" style="text-align:center;">Date</th>
+                        <th scope="col" style="text-align:center;">Type</th>
+                        <th scope="col" style="text-align:center;">Amount</th>
+                    </tr>
+                </thead>
+                <tbody style="text-align:center;">
+                    {{#each returnListOfPaymentsInsideTicket}}
+                    <tr>
+                        <td>{{dateOfSinceToday createdAt}}</td>
+                        <td>{{paymentType}}</td>
+
+                        <td>{{dollarValue payment}}</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>                    
+                    {{/each}}
+                </tbody>
+            </table>
+            <br />
+            <br />
+            <button  class="btn btn-block btn-success urgent" style="position:absolute; bottom:40px;min-height:60px;left:0px;max-width:{{getBackButtonWidth}}px;margin-top:20px;letter-spacing: 10px;" data-id="goBack"><span class="btn-success glyphicon large glyphicon-backward" aria-hidden="true" data-id="goBack"></span></button>
+        </div>
+    </div>
+</template>
+

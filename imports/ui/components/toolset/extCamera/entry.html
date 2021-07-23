@@ -1,0 +1,28 @@
+<template name="extCamera">
+<div style="background-color:white;position:absolute;display:block;height:{{getHeight}}px;width:{{getWidth}}px" >
+ <video id="video" height="{{getHeight}}px" style="position:absolute;top:0px;width:100%;height:{{getHeight}}px;" playsinline autoplay></video>
+ <div style="border: 2px solid #00000069;padding:10px;position:absolute;margin:50px;display:block;height:{{getHeight "box"}}px;width:{{getWidth "box"}}px" >
+  <div id="overLay"  style="border: 2px solid black;padding:50px;background-color:#1515150f; width:100%;Height:100%"></div>
+ </div>
+ <button id="saveStopTransmission"   class="btn btn-block btn-success chooseViewTabPill chooseNewTabPill saveImagesGlobal" style="    background-color: #443e40;
+  border-color: #443e40;position:absolute;top:0px;z-index:12;
+  letter-spacing: 10px;" data-id="save">Save Picture</button>
+ <button  id="stopTransmission"  class="btn btn-block btn-success chooseViewTabPill chooseNewTabPill " style="    background-color: #443e40;
+  border-color: #443e40;
+  letter-spacing: 10px;position:absolute;bottom:0px;" data-id="cancelCamera">Cancel</button>
+</div>
+<div  style="position:absolute;margin:50px;display:block;width:{{getWidth "box"}}px;    top: 80px;" >
+   {{#each thumbnails}}
+   <img class="thumb" style="width:40px;margin:5px;" src="{{this}}" data-index="{{@index}}" />
+   {{/each}}
+</div>
+{{#if currentStateUpload}}
+<div style="position:absolute;margin:50px;display:block;width:{{getWidth "box"}}px;height:{{getHeight "box"}}px;padding:20px; text-align:center; font-size:30px;   background-color: #fffffffa;" >
+ <br />
+ <br />
+{{#with currentUpload}}
+ <small style="position:relative;top:30%;margin-top:20%;" > Uploading Your Images<br /> Please Wait...</small>
+{{/with}}
+</div>
+{{/if}}
+</template>

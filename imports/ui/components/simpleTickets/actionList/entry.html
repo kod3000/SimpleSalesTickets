@@ -1,0 +1,28 @@
+<template name="cST_List">
+<meta name="theme-color" content="{{JACKCSS "BC"}}">
+{{#if processLoading}}
+<div>{{>loading}}</div>
+{{/if}}
+<div class="swiper-container" style="position:absolute;display:block;height:{{getHeight}}px;width:{{getWidthCustom}}px;zoom:3;"  >
+<div class="swiper-wrapper" >
+    <div class="swiper-slide"  >
+        {{>listTicketView}}
+    </div>
+    <div class="swiper-slide">
+        {{>editClienttView}}
+    </div>
+    <!-- no more views -->
+</div>
+</div>
+  <!-- end -->
+<script>
+var swiper = new Swiper('.swiper-container', {
+                        pagination: '.swiper-pagination',
+                        paginationClickable: true,
+                        nextButton: '.nextPass',
+                        prevButton: '.nextPin',
+                        
+                        spaceBetween: 30
+                        });
+</script>
+</template>

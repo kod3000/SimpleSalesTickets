@@ -1,0 +1,37 @@
+<template name="notesTicketView">
+    <div style="padding:5px;position:absolute;display:block;height:{{getHeight}}px;width:{{getWidthCustom}}px; overflow-y: auto;" >
+        <div  id="noteCont" style="border-color:green;height:{{getHalfHeight}}px;width:{{getWidth}}px;border-radius:10px;text-align:right;">
+            <small style="font-weight: 500;
+                letter-spacing: 2px;
+                display: block;
+                background-color: #0000000a;
+                padding: 5px;" >[ Add Note ]</small>
+            <br />
+            <textarea name="note" id="note" placeholder="Customer had a special request.."  rows="10" cols="30" style="text-align:right;max-height: 100px;width:100%;margin-bottom:5px;border:1px solid #0000001f;padding:5px;    background-color: #ffffff2e;"></textarea><br />
+<br />
+                            <button  class="btn btn-block btn-success " style="margin-top:20px; letter-spacing: 10px;" data-id="save">Save Note</button>                     
+                            <button  class="btn btn-block btn-success urgent" style="margin-top:20px;letter-spacing: 10px;" data-id="cancel">Cancel</button>
+                            <br />
+                            {{#each itemsReadyToAdd}}
+                            <span style="position:relative;width:40px;height:40px;background-color:yellow;display:inline-block;margin:5px;"></span>
+                            {{/each}}
+                            </div>
+        <div id="noteDisp" style="display:none; border-color:green;height:{{getHalfHeight}}px;width:{{getWidth}}px;border-radius:10px;text-align:right;">
+            <small style="font-weight: 500;
+                letter-spacing: 2px;
+                display: block;
+                padding: 5px;" >[ Project : {{getSessionData.project}} ]</small>
+            <button  class="btn btn-block btn-success " style="margin-top:20px;letter-spacing: 10px;" data-id="note">Make Note</button>
+            <br/>
+                    {{#each returnListOfNotesInsideTicket}}
+                    <p style="padding: 10px;
+                    margin: 5px;
+                    background-color: #d4d4d424;
+                    border-radius: 10px;" >"{{note}}"</p>
+                    {{/each}}
+            <br />
+            <br />
+            <button  class="btn btn-block btn-success urgent" style="position:absolute; bottom:40px;min-height:60px;left:0px;max-width:{{getBackButtonWidth}}px;margin-top:20px;letter-spacing: 10px;" data-id="goBack"><span class="btn-success glyphicon large glyphicon-backward" aria-hidden="true" data-id="goBack"></span></button>
+        </div>
+    </div>
+</template>
