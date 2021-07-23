@@ -42,7 +42,7 @@
 // end install missing modules
 
 // regular app start
-const notifier = require('node-notifier');
+// const notifier = require('node-notifier');
 var cmd = require('node-cmd');
 var moment = require('moment');
 var path = require('path');
@@ -81,19 +81,19 @@ const timeBetweenPushes = 2; // time in minutes to wait till next auto push.. yo
 
 
 // osx tool for notifying 
-function tools_Message(txt,title,pic,tmOut){
-  if(title == null)title="[ Maintain.js ]";
-  if(tmOut == null || isNAN(tmOut))tmOut = false;
-  var nc_qk = new notifier.NotificationCenter();
-  nc_qk.notify({
-   title: title,
-   message: txt,
-   sound: 'Ping',
-   timeout: tmOut,
-   //icon: path.join(__dirname, 'logo.png'), // if you want to display a logo
-   //contentImage: pic, // pass in a image url for giggles..
- });
-}
+// function tools_Message(txt,title,pic,tmOut){
+//   if(title == null)title="[ Maintain.js ]";
+//   if(tmOut == null || isNAN(tmOut))tmOut = false;
+//   var nc_qk = new notifier.NotificationCenter();
+//   nc_qk.notify({
+//    title: title,
+//    message: txt,
+//    sound: 'Ping',
+//    timeout: tmOut,
+//    //icon: path.join(__dirname, 'logo.png'), // if you want to display a logo
+//    //contentImage: pic, // pass in a image url for giggles..
+//  });
+// }
 
 // main function for app 
 // checks for files changed in project folder.. 
